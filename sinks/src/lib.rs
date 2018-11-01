@@ -18,6 +18,11 @@
 // Enable warning for missing docs:
 #![warn(missing_docs)]
 
+// Enable `extern crate alloc`
+#![feature(alloc)]
+
+extern crate alloc; // Needed for `Vec` when using `no_std`
+
 #[cfg(not(feature = "std"))]
 extern crate core as std;
 
