@@ -7,11 +7,17 @@ rust:
 matrix:
   include:
     - rust: nightly
-      env: OPT="-Z package-features --package signalo --no-default-features"
+      env: >
+        PACKAGE="-Z package-features --package signalo"
+        FEATURES="--no-default-features"
+    - rust: nightly
+      env: >
+        PACKAGE="-Z package-features --package signalo"
+        FEATURES="--no-default-features --features nightly"
   allow_failures:
     - rust: nightly
   fast_finish: true
 
 script:
-  - cargo build $OPT --verbose --all
-  - cargo test $OPT --verbose --all
+  - cargo build --verbose $PACKAGE $FEATURES
+  - cargo test --verbose $PACKAGE $FEATURES
