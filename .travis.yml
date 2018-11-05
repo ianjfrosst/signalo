@@ -8,8 +8,6 @@ matrix:
   include:
     - rust: nightly
       env: OPT="-Z package-features --package signalo --no-default-features"
-    - rust: nightly
-      env: OPT=""
   allow_failures:
     - rust: nightly
   fast_finish: true
