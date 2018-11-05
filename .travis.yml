@@ -3,7 +3,19 @@ rust:
   - stable
   - beta
   - nightly
+
+env:
+  - FEATURE=std
+  - FEATURE=nightly
+
 matrix:
+  include:
+    - rust: nightly
+      env: PACK="-Z package-features --package signalo"
   allow_failures:
     - rust: nightly
   fast_finish: true
+
+script:
+  - cargo build --verbose $PACK --no-default-features --features $FEATURE
+  - cargo test --verbose $PACK --no-default-features --features $FEATURE
