@@ -11,7 +11,9 @@ env:
 matrix:
   include:
     - rust: nightly
-      env: PACK="-Z package-features --package signalo"
+      env:
+        global:
+          - PACK="-Z package-features --package signalo"
   allow_failures:
     - rust: nightly
   fast_finish: true
